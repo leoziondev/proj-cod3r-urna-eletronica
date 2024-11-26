@@ -6,11 +6,11 @@ import Button from "../shared/Button";
 
 interface FormCandidatoProps {
     candidato: Partial<Candidato>;
-    onSave?: (candidato: Candidato) => void
+    onSave?: (candidato: Partial<Candidato>) => void
     onCancel?: () => void
 }
 
-export default function FormCandidato({ candidato, onCancel }: FormCandidatoProps) {
+export default function FormCandidato({ candidato, onCancel, onSave }: FormCandidatoProps) {
     const [singleCandidato, setSingleCandidato] = useState<Partial<Candidato>>(candidato)
 
     return (
@@ -63,7 +63,7 @@ export default function FormCandidato({ candidato, onCancel }: FormCandidatoProp
                     Cancelar
                 </Button>
                 <Button
-                    // onClick={() => onDelete(candidato)}
+                    onClick={() => onSave?.(singleCandidato)}
                     className="bg-sky-500 hover:bg-sky-600"
                 >
                     Salvar
