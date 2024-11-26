@@ -5,6 +5,7 @@ import CandidatoItem from "./CandidatoItem";
 import { useState } from "react";
 import FormCandidato from "./FormCandidato";
 import Button from "../shared/Button";
+import { cn } from "@/lib/utils";
 
 export interface CandidatosProps {
     candidatos: Candidato[];
@@ -38,7 +39,9 @@ export default function CandidatoList({candidatos}: CandidatosProps) {
 
     return (
         <>
-            <div className="flex justify-end mb-8">
+            <div className={cn('flex justify-end mb-8', {
+                hidden: selectCandidato
+            })}>
                 <Button
                     onClick={() => setSelectCandidato({})}
                     className="bg-sky-500 hover:bg-sky-600"
